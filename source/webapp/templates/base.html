@@ -16,12 +16,12 @@
    <div class="container">
        <ul class="menu">
            <li><a href="{% url 'webapp:index' %}">Главная</a></li>
-{#       {% if user.is_authenticated %}#}
-{#            <li><a href="{% url 'accounts:detail' request.user.pk %}">Привет, {{ request.user }}!</a></li>#}
-{#       <li><a href="{% url 'accounts:logout' %}">Выйти</a></li>#}
-{#       {% else %}#}
-{#       <li><a href="{% url 'accounts:login' %}">Войти</a></li>#}
-{#       {% endif  %}#}
+       {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:detail' request.user.pk %}">Привет, {{ request.user }}!</a></li>
+       <li><a href="{% url 'logout' %}">Выйти</a></li>
+       {% else %}
+       <li><a href="{% url 'login' %}">Войти</a></li>
+       {% endif  %}
           {% block menu %}{% endblock %}
        </ul>
    </div>

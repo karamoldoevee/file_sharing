@@ -5,19 +5,24 @@
 {% endblock %}
 {% block content %}
     <h1>Файлы:</h1>
+    {% include 'partial/search_form.html' %}
     <hr/>
     {% if is_paginated %}
        {% include 'partial/pagination.html' %}
    {% endif %}
     {% for file in files %}
-            <p>Файл: {{ file.upload }}</p>
+        {% if file.status == private %}
+            <p><a href="{% url 'webapp:file_detail' file.pk %}" class="btn btn-success">Файл: {{ file.upload }}</a></p>
             <p>Подпись: {{ file.signature }}</p>
             <p>Автор: {{ file.author }}</p>
             <p>Cоздана: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
-            <p>Лайки: {{ file.status }}</p>
-            <a href="{% url 'webapp:file_update' file.pk %}">Обновить</a>
-            <a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a>
+            <p>Статус: {{ file.status }}</p>
+            <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
+            <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
         <hr/>
+        {% else %}
+            <p>Привет</p>
+        {% endif %}
     {% endfor %}
     {% if is_paginated %}
        {% include 'partial/pagination.html' %}
