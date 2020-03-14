@@ -27,7 +27,7 @@
                 <p class="col-6 pl-5">Файлы:</p>
                 {% for file in user_obj.created_file.all %}
                     {% if file.status == 'public' or request.user == file.author%}
-                    <p><a href="{% url 'webapp:file_detail' file.pk %}"> {{ file.signature }} </a></p>
+                        <p><a href="{% url 'webapp:file_detail' file.pk %}"> {{ file.signature }} </a></p>
                     {% else %}
                     {% endif %}
                 {% endfor %}

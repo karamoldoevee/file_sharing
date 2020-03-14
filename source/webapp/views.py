@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
-from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 
@@ -59,12 +58,6 @@ class FileUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_file'
     permission_denied_message = "Доступ запрещён"
 
-    def has_permission(self):
-        return super().has_permission() or self.file_author(self.request.user)
-
-    def file_author(self, user):
-        return self.get_object().author == user
-
     def get_success_url(self):
         return reverse('webapp:index')
 
@@ -76,9 +69,3 @@ class FileDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('webapp:index')
     permission_required = 'webapp.delete_file'
     permission_denied_message = "Доступ запрещён"
-
-    def has_permission(self):
-        return super().has_permission() or self.file_author(self.request.user)
-
-    def file_author(self, user):
-        return self.get_object().author == user

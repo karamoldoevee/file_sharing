@@ -20,6 +20,10 @@
         {% endif %}
         </div>
         <p>Дата создания: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
-        <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
-        <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
+        {% if perms.webapp.change_file or request.user == file.author%}
+            <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
+        {% endif %}
+        {% if perms.webapp.delete_file or request.user == file.author%}
+            <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
+        {% endif %}
 {% endblock %}
