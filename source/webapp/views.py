@@ -93,7 +93,8 @@ class FileDeleteView(PermissionRequiredMixin, DeleteView):
         return self.get_object().author == user
 
 
-class AddToPrivate(LoginRequiredMixin, View):
+class AddToPrivate(PermissionRequiredMixin, View):
+    permission_required = 'webapp.add_private'
     def post(self, request, *args, **kwargs):
         user = request.user
         file = get_object_or_404(File, pk=request.POST.get('pk'))
@@ -101,7 +102,7 @@ class AddToPrivate(LoginRequiredMixin, View):
         return JsonResponse({'pk': file.pk})
 
 
-class DeleteFromPrivate(LoginRequiredMixin, View):
+class DeleteFromPrivate(PermissionRequiredMixin, View):
     permission_required = 'webapp.delete_private'
 
     def post(self, request, *args, **kwargs):
