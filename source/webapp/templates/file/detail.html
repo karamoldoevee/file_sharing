@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block menu %}
+    <li><a href="{% url 'webapp:file_update' file.pk %}">Редактировать</a></li>
+    <li><a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a></li>
+{% endblock %}
+{% block content %}
+    <div class="row">
+                <div class="left col-10 d-flex justify-content-center">
+                    <h5>{{ file.signature }}</h5>
+                </div>
+            </div>
+    <div class="row my-5">
+                <div class="left col-10 d-flex justify-content-center">
+                    <h5>{{ file.upload }}</h5>
+                </div>
+            </div>
+        <div class="row">
+            <p class="text col-6">Статус: {{ file.status }}</p>
+        </div>
+        <div class="row">
+            <p class="text col-6">Автор: <a href="{% url 'accounts:detail' file.author.pk%}">{{ file.author }}</a></p>
+        </div>
+        <p>Дата создания: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
+        <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
+        <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
+{% endblock %}
