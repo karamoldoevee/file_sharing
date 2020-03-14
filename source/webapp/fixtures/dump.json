@@ -1,0 +1,167 @@
+[
+{
+  "model": "webapp.file",
+  "pk": 23,
+  "fields": {
+    "signature": "\u041f\u0435\u0440\u0432\u044b\u0439 \u0444\u0430\u0439\u043b",
+    "upload": "uploads/ajax.jpeg",
+    "author": 1,
+    "created_at": "2020-03-14T07:18:04.163Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 24,
+  "fields": {
+    "signature": "\u0412\u0442\u043e\u0440\u043e\u0439 \u0444\u0430\u0439\u043b",
+    "upload": "uploads/angular.png",
+    "author": 6,
+    "created_at": "2020-03-14T07:24:15.441Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 25,
+  "fields": {
+    "signature": "\u0421\u043a\u0440\u044b\u0442\u044b\u0439 \u041f\u0435\u0440\u0432\u044b\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/web.jpg",
+    "author": 3,
+    "created_at": "2020-03-14T07:33:03.586Z",
+    "status": "hidden"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 26,
+  "fields": {
+    "signature": "\u0421\u043a\u0440\u044b\u0442\u044b\u0439 \u0412\u0442\u043e\u0440\u043e\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/vue.png",
+    "author": 3,
+    "created_at": "2020-03-14T07:33:37.186Z",
+    "status": "private"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 27,
+  "fields": {
+    "signature": "\u0422\u0440\u0435\u0442\u0438\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/bootstrap.png",
+    "author": 3,
+    "created_at": "2020-03-14T07:48:35.262Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 29,
+  "fields": {
+    "signature": "\u0427\u0435\u0442\u0432\u0451\u0440\u0442\u044b\u0439 \u0444\u0430\u0439\u043b",
+    "upload": "uploads/django_aDuv99Z.png",
+    "author": null,
+    "created_at": "2020-03-14T08:19:27.767Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 30,
+  "fields": {
+    "signature": "\u041f\u044f\u0442\u044b\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/git.png",
+    "author": null,
+    "created_at": "2020-03-14T08:40:21.569Z",
+    "status": "private"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 31,
+  "fields": {
+    "signature": "\u0422\u0440\u0435\u0442\u0438\u0439 \u0421\u043a\u0440\u044b\u0442\u044b\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/html_css__js.jpeg",
+    "author": null,
+    "created_at": "2020-03-14T08:42:15.456Z",
+    "status": "hidden"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 32,
+  "fields": {
+    "signature": "Emir",
+    "upload": "uploads/laravael.jpeg",
+    "author": 1,
+    "created_at": "2020-03-14T08:43:32.434Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 33,
+  "fields": {
+    "signature": "Emir2",
+    "upload": "uploads/jcsog.png",
+    "author": null,
+    "created_at": "2020-03-14T08:44:41.409Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 34,
+  "fields": {
+    "signature": "Emir3",
+    "upload": "uploads/linux.png",
+    "author": 1,
+    "created_at": "2020-03-14T08:45:03.719Z",
+    "status": "public"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 35,
+  "fields": {
+    "signature": "\u041f\u0435\u0440\u0432\u044b\u0439 \u041f\u0440\u0438\u0432\u0430\u0442\u043d\u044b\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/flask.png",
+    "author": 5,
+    "created_at": "2020-03-14T08:57:14.005Z",
+    "status": "private"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 36,
+  "fields": {
+    "signature": "\u0428\u0435\u0441\u0442\u043e\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/react.png",
+    "author": 1,
+    "created_at": "2020-03-14T09:18:13.048Z",
+    "status": "private"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 37,
+  "fields": {
+    "signature": "\u0421\u0435\u0434\u044c\u043c\u043e\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/mys.png",
+    "author": 1,
+    "created_at": "2020-03-14T09:20:37.815Z",
+    "status": "hidden"
+  }
+},
+{
+  "model": "webapp.file",
+  "pk": 38,
+  "fields": {
+    "signature": "\u0412\u043e\u0441\u044c\u043c\u043e\u0439 \u0424\u0430\u0439\u043b",
+    "upload": "uploads/open_source.png",
+    "author": 1,
+    "created_at": "2020-03-14T09:20:56.907Z",
+    "status": "private"
+  }
+}
+]

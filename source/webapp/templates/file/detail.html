@@ -4,7 +4,7 @@
     <li><a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a></li>
 {% endblock %}
 {% block content %}
-    {% if file.status == 'public' or request.user == file.author%}
+    {% if file.status == 'public' or file.status == 'hidden' or request.user == file.author%}
     <div class="row my-5">
                 <div class="left col-10 d-flex justify-content-center">
                     <a href='{{ file.upload.url }}' class="btn btn-success">Скачать</a>

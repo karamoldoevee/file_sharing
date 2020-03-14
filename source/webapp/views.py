@@ -47,7 +47,7 @@ class FileCreateView(CreateView):
             return self.form_invalid(form)
 
     def get_success_url(self):
-        return reverse('webapp:index')
+        return reverse('webapp:file_detail', kwargs={'pk': self.object.pk})
 
 
 class FileUpdateView(PermissionRequiredMixin, UpdateView):
@@ -59,7 +59,7 @@ class FileUpdateView(PermissionRequiredMixin, UpdateView):
     permission_denied_message = "Доступ запрещён"
 
     def get_success_url(self):
-        return reverse('webapp:index')
+        return reverse('webapp:file_detail', kwargs={'pk': self.object.pk})
 
 
 class FileDeleteView(PermissionRequiredMixin, DeleteView):
