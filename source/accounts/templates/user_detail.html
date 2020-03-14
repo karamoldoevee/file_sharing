@@ -26,7 +26,7 @@
             <div class="row ">
                 <p class="col-6 pl-5">Файлы:</p>
                 {% for file in user_obj.created_file.all %}
-                    <p><a href="{% url 'webapp:file_detail' file.pk %}"> {{ file.upload }} </a></p>
+                    <p><a href="{% url 'webapp:file_detail' file.pk %}"> {{ file.signature }} </a></p>
                 {% endfor %}
             </div>
         </div>

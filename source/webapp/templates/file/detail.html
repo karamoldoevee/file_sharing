@@ -4,14 +4,9 @@
     <li><a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a></li>
 {% endblock %}
 {% block content %}
-    <div class="row">
-                <div class="left col-10 d-flex justify-content-center">
-                    <h5>{{ file.signature }}</h5>
-                </div>
-            </div>
     <div class="row my-5">
                 <div class="left col-10 d-flex justify-content-center">
-                    <h5>{{ file.upload }}</h5>
+                    <a href='{{ file.upload.url }}'>{{ file.signature }}</a>
                 </div>
             </div>
         <div class="row">

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
@@ -9,7 +10,7 @@ from webapp.models import File
 
 
 class FileListView(SearchView):
-    model = File
+    queryset = File.objects.filter(status='public')
     template_name = 'file/list.html'
     context_object_name = 'files'
 
@@ -23,6 +24,7 @@ class FileListView(SearchView):
 
     def get_filters(self):
         return Q(signature__icontains=self.search_value)
+
 
 class FileDetailView(DetailView):
     template_name = 'file/detail.html'
@@ -44,19 +46,34 @@ class FileCreateView(CreateView):
         return reverse('webapp:index')
 
 
-class FileUpdateView(UpdateView):
+class FileUpdateView(PermissionRequiredMixin, UpdateView):
     model = File
     template_name = 'change.html'
     fields = ['signature', 'upload', 'status']
     context_object_name = 'file'
+    permission_required = 'webapp.change_file'
+    permission_denied_message = "Доступ запрещён"
 
+    def has_permission(self):
+        return super().has_permission() or self.file_author(self.request.user)
+
+    def file_author(self, user):
+        return self.get_object().author == user
 
     def get_success_url(self):
         return reverse('webapp:index')
 
 
-class FileDeleteView(DeleteView):
+class FileDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'delete.html'
     model = File
     context_object_name = 'file'
     success_url = reverse_lazy('webapp:index')
+    permission_required = 'webapp.delete_file'
+    permission_denied_message = "Доступ запрещён"
+
+    def has_permission(self):
+        return super().has_permission() or self.file_author(self.request.user)
+
+    def file_author(self, user):
+        return self.get_object().author == user

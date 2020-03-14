@@ -11,7 +11,6 @@
        {% include 'partial/pagination.html' %}
    {% endif %}
     {% for file in files %}
-        {% if file.status == private %}
             <p><a href="{% url 'webapp:file_detail' file.pk %}" class="btn btn-success">Файл: {{ file.upload }}</a></p>
             <p>Подпись: {{ file.signature }}</p>
             <p>Автор: {{ file.author }}</p>
@@ -20,9 +19,6 @@
             <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
             <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
         <hr/>
-        {% else %}
-            <p>Привет</p>
-        {% endif %}
     {% endfor %}
     {% if is_paginated %}
        {% include 'partial/pagination.html' %}
