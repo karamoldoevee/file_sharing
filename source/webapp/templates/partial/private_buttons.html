@@ -1,0 +1,15 @@
+{% load is_private %}
+<div id="private-button-{{ file.pk }}" class="mt-2">
+    {% with private=file|is_private:request.user %}
+        <a href="{% url "webapp:add_to_private" %}"
+         id="add-to-private-{{ file.pk }}"
+        class="btn btn-success privates-add
+                  {% if private %}d-none{% endif %}"
+           data-file-pk="{{ file.pk }}">Добавить в приватное</a>
+        <a href="{% url "webapp:delete_from_private" %}"
+           id="delete-from-privates-{{ file.pk }}"
+           class="btn btn-danger privates-delete
+                 {% if not private %}d-none{% endif %}"
+           data-file-pk="{{ file.pk }}">Удалить из приватного</a>
+    {% endwith %}
+</div>
