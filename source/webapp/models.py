@@ -19,3 +19,15 @@ class File(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     status = models.CharField(max_length=50, verbose_name='Статус', default=PROJECT_DEFAULT_STATUS,
                               choices=PROJECT_STATUS_CHOICES)
+
+
+class Private(models.Model):
+    file = models.ForeignKey('File', on_delete=models.CASCADE, related_name='private_file')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='privates')
+
+    def __str__(self):
+        return self.file.signature
+
+    class Meta:
+        verbose_name = 'Приватное'
+        verbose_name_plural = 'Приватное'
