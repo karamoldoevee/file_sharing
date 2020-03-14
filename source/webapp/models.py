@@ -17,12 +17,5 @@ class File(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,
                                verbose_name='Автор', related_name='created_file')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    status = models.ForeignKey('webapp.Status', on_delete=models.PROTECT, blank=False, default=DEFAULT_STATUS_ID,
-                               verbose_name='Статус', related_name='statuses')
-
-
-class Status(models.Model):
-    name = models.CharField(max_length=20, verbose_name='Статус')
-
-    def __str__(self):
-        return self.name
+    status = models.CharField(max_length=50, verbose_name='Статус', default=PROJECT_DEFAULT_STATUS,
+                              choices=PROJECT_STATUS_CHOICES)
