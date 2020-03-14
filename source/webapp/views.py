@@ -1,11 +1,14 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic.base import View
 
 from webapp.base_views import SearchView
 from webapp.forms import SimpleSearchForm, AnonymousFileForm, FileForm
-from webapp.models import File
+from webapp.models import File, Private
 
 
 class FileListView(SearchView):
@@ -76,3 +79,21 @@ class FileDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('webapp:index')
     permission_required = 'webapp.delete_file'
     permission_denied_message = "Доступ запрещён"
+
+
+class AddToPrivate(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        file = get_object_or_404(File, pk=request.POST.get('pk'))
+        Private.objects.get_or_create(user=user, file=file)
+        return JsonResponse({'pk': file.pk})
+
+
+class DeleteFromPrivate(LoginRequiredMixin, View):
+    permission_required = 'webapp.delete_private'
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        file = get_object_or_404(File, pk=request.POST.get('pk'))
+        Private.objects.filter(file=file, user=user).delete()
+        return JsonResponse({'pk': file.pk})
