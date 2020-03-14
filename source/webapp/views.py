@@ -37,10 +37,15 @@ class FileCreateView(CreateView):
     template_name = 'add.html'
     fields = ['signature', 'upload', 'status']
 
-    def form_valid(self, form):
-        self.object = File.objects.create(author=self.request.user, upload=form.cleaned_data['upload'],
-                                          signature=form.cleaned_data['signature'], status=form.cleaned_data['status'])
-        return HttpResponseRedirect(self.get_success_url())
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save()
+            if request.user.is_authenticated:
+                self.object.author = request.user
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
     def get_success_url(self):
         return reverse('webapp:index')

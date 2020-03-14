@@ -13,7 +13,11 @@
             <p class="text col-6">Статус: {{ file.status }}</p>
         </div>
         <div class="row">
+        {% if file.author == None %}
+            <p class="text col-6">Автор: Аноним</p>
+        {% else %}
             <p class="text col-6">Автор: <a href="{% url 'accounts:detail' file.author.pk%}">{{ file.author }}</a></p>
+        {% endif %}
         </div>
         <p>Дата создания: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
         <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>

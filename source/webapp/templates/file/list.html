@@ -11,9 +11,13 @@
        {% include 'partial/pagination.html' %}
    {% endif %}
     {% for file in files %}
-            <p><a href="{% url 'webapp:file_detail' file.pk %}" class="btn btn-success">Файл: {{ file.upload }}</a></p>
-            <p>Подпись: {{ file.signature }}</p>
-            <p>Автор: {{ file.author }}</p>
+            <p><a href="{{ file.upload.url }}" class="btn btn-success">Файл: {{ file.upload }}</a></p>
+            <p><b><a href='{% url 'webapp:file_detail' file.pk %}'>{{ file.signature }}</a></b></p>
+            {% if file.author == None %}
+                <p>Автор: Аноним</p>
+            {% else %}
+                <p>Автор: {{ file.author }}</p>
+            {% endif %}
             <p>Cоздана: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
             <p>Статус: {{ file.status }}</p>
             <a href="{% url 'webapp:file_update' file.pk %}" class="btn btn-primary">Обновить</a>
