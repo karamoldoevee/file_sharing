@@ -34,7 +34,7 @@ class FileCreateView(CreateView):
         return reverse('webapp:index')
 
 
-class PhotoUpdateView(UpdateView):
+class FileUpdateView(UpdateView):
     model = File
     template_name = 'change.html'
     fields = FileForm
@@ -44,7 +44,7 @@ class PhotoUpdateView(UpdateView):
         return reverse('webapp:index')
 
 
-class PhotoDeleteView(DeleteView):
+class FileDeleteView(DeleteView):
     template_name = 'delete.html'
     model = File
     context_object_name = 'file'

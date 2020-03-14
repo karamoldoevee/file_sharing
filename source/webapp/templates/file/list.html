@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menu %}
+    <li><a href ="{% url 'webapp:file_create' %}">Добавить Файл</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Файлы:</h1>
+    <hr/>
+    {% if is_paginated %}
+       {% include 'partial/pagination.html' %}
+   {% endif %}
+    {% for file in files %}
+            <p>Файл: {{ file.upload }}</p>
+            <p>Подпись: {{ file.signature }}</p>
+            <p>Автор: {{ file.author }}</p>
+            <p>Cоздана: {{ file.created_at|date:'Y-m-d H:i:s' }}</p>
+            <p>Лайки: {{ file.status }}</p>
+            <a href="{% url 'webapp:file_update' file.pk %}">Обновить</a>
+            <a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a>
+        <hr/>
+    {% endfor %}
+    {% if is_paginated %}
+       {% include 'partial/pagination.html' %}
+   {% endif %}
+{% endblock %}

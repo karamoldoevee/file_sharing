@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 80px;
+
+}
+
+.navbar {
+    background: darkblue;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 0;
+    padding: 20px 30px;
+}
+
+.menu {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    color: #fffee8;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 5px 15px;
+}
+
+h1, h2, h3, h4, h5 {
+    text-align: center;
+}
+.form-inline{
+    padding:20px 0;
+    justify-content: center;
+}
+.form-inline button{
+    margin-left:20px;
+}
+.confirm .btn{
+    color:white;
+    margin:0 20px;
+    padding:20px 30px;
+}
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin:0 auto;
+}
+
+.mt-5{
+    margin:50px 0 0 0;
+}
+
+.form-block{
+    margin-top:20px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.form-control{
+    display:flex;
+    flex-direction:row;
+}
+.form-error {
+    color: red;
+    font-size: 14px;
+
+}
+.field-error {
+    border: solid 1px red;
+    box-shadow: red 0 0 3px;
+}
+
+.object{
+    margin:40px 0;
+    border:3px solid darkblue;
+    border-radius: 6px;
+    padding:20px;
+}
+
+.create{
+    color: green;
+}
+
+.update{
+    margin-right: 10px;
+    color: darkturquoise;
+}
+
+.delete{
+    color: red;
+}
+
+a{
+    color: black;
+}
