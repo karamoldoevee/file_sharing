@@ -63,10 +63,16 @@ class FileCreateView(CreateView):
 class FileUpdateView(PermissionRequiredMixin, UpdateView):
     model = File
     template_name = 'change.html'
-    fields = ['signature', 'upload', 'status']
+    form_class = FileForm
     context_object_name = 'file'
     permission_required = 'webapp.change_file'
     permission_denied_message = "Доступ запрещён"
+
+    def has_permission(self):
+        return super().has_permission() or self.file_author(self.request.user)
+
+    def file_author(self, user):
+        return self.get_object().author == user
 
     def get_success_url(self):
         return reverse('webapp:file_detail', kwargs={'pk': self.object.pk})
@@ -79,6 +85,12 @@ class FileDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('webapp:index')
     permission_required = 'webapp.delete_file'
     permission_denied_message = "Доступ запрещён"
+
+    def has_permission(self):
+        return super().has_permission() or self.file_author(self.request.user)
+
+    def file_author(self, user):
+        return self.get_object().author == user
 
 
 class AddToPrivate(LoginRequiredMixin, View):

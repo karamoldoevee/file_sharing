@@ -8,8 +8,8 @@ urlpatterns = [
     path('file/detail/<int:pk>/', FileDetailView.as_view(), name='file_detail'),
     path('file/update/<int:pk>/', FileUpdateView.as_view(), name='file_update'),
     path('file/delete/<int:pk>/', FileDeleteView.as_view(), name='file_delete'),
-    path('product/add-to-favorites/', AddToPrivate.as_view(), name='add_to_favorites'),
-    path('product/delete-from-favorites/', DeleteFromPrivate.as_view(), name='delete_from_favorites')
+    path('product/add-to-private/', AddToPrivate.as_view(), name='add_to_private'),
+    path('product/delete-from-private/', DeleteFromPrivate.as_view(), name='delete_from_private')
 ]
 
 app_name = 'webapp'
