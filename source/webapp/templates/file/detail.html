@@ -4,9 +4,10 @@
     <li><a href="{% url 'webapp:file_delete' file.pk %}">Удалить</a></li>
 {% endblock %}
 {% block content %}
+    {% if file.status == 'public' or request.user == file.author%}
     <div class="row my-5">
                 <div class="left col-10 d-flex justify-content-center">
-                    <a href='{{ file.upload.url }}'>{{ file.signature }}</a>
+                    <a href='{{ file.upload.url }}' class="btn btn-success">Скачать</a>
                 </div>
             </div>
         <div class="row">
@@ -26,4 +27,7 @@
         {% if perms.webapp.delete_file or request.user == file.author%}
             <a href="{% url 'webapp:file_delete' file.pk %}" class="btn btn-danger">Удалить</a>
         {% endif %}
+    {% else %}
+        Ошибка 404
+    {% endif %}
 {% endblock %}
